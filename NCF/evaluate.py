@@ -143,10 +143,13 @@ def main(config) :
             items = eval_items.to(device)
 
             prediction = model(users, items)
-            sorted_items = prediction.argsort(descending=True)
-            positive_samples = interact_status.iloc[user]['interacted_items']
 
-            rec_items = np.setdiff1d(np.array(sorted_items.to('cpu')), positive_samples)
+            sorted_items = prediction.argsort(descending=True)
+            sorted_items = np.array(sorted_items.to('cpu'))
+        
+            positive_samples = np.array(interact_status.iloc[user]['interacted_items'])
+
+            rec_items = sorted_items[~np.in1d(sorted_items, positive_samples)]
 
             result[0, 10*user:10*(user+1)] = user
             result[1, 10*user:10*(user+1)] = rec_items[:config.top_k]
