@@ -6,3 +6,5 @@ eval_args:
 neg_sampling: ~
 metrics: ['AUC', 'LogLoss']
 valid_metric: AUC
+load_col: 
+    inter: ['user_id', 'item_id', 'timestamp']

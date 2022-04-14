@@ -5,3 +5,5 @@ eval_args:
 metrics: ['AUC', 'LogLoss']
 valid_metric: AUC
 repeatable: True
+load_col: 
+    inter: ['user_id', 'item_id', 'timestamp']

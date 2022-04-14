@@ -4,17 +4,19 @@ from recbole.quick_start.quick_start import load_data_and_model
 from recbole.utils.case_study import full_sort_topk
 import numpy as np
 import os
+import torch
 
+torch.cuda.empty_cache()
 
 # submission_index.csv 파일이 생성되기 전이라면 for_submission.py 파일을 실행해주세요.
-user_index = pd.read_csv('/opt/ml/Recbole/submission_index.csv')
+user_index = pd.read_csv('/opt/ml/RecBole/submission_index.csv')
 
 user_index = np.array(user_index['user'],dtype=str)
 
 
 # 불러올 모델의 주소를 넣어주세요.
 config, model, dataset, train_data, valid_data, test_data = load_data_and_model(
-    model_file='/opt/ml/Recbole/saved/MacridVAE-Apr-06-2022_07-57-01.pth'
+    model_file='/opt/ml/RecBole/saved/FDSA-Apr-13-2022_14-43-01.pth'
 )
 
 uid_series = dataset.token2id(dataset.uid_field, user_index)
@@ -46,11 +48,11 @@ print(df)
 print()
 
 
-path = '/opt/ml/Recbole/output'
+path = '/opt/ml/RecBole/output'
 
 os.makedirs(path, exist_ok=True)
 
-df.to_csv('/opt/ml/Recbole/output/submission.csv',index=False)
+df.to_csv('/opt/ml/RecBole/output/FDSA_submission.csv',index=False)
 
 print()
 print('csv 파일 생성 완료')

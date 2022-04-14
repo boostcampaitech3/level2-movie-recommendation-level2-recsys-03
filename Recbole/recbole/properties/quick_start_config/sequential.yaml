@@ -3,3 +3,5 @@ eval_args:
   order: TO
   mode: full
 repeatable: True
+load_col: 
+    inter: ['user_id', 'item_id', 'timestamp']
