@@ -1,6 +1,3 @@
-Write : Suyeon Hong
-Date : Apr. 14, 2022 
-
 Reference : https://recbole.io/ 
 
 These files are based on the <font color = yellow> RecBole</font> Open source Library.
